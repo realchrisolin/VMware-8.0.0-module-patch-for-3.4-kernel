@@ -1,0 +1,9 @@
+VMware Workstation 8.0.0 module patch for 3.4 kernels. Based off of work provided by Weltall located at http://weltall.heliohost.org/wordpress/2011/11/09/vmware-workstation-8-x-player-4-x-virtualbox-fix-for-linux-3-2. While he has published many patches for vmware modules, this will fix VMware Workstation 8.0.0 on 3.4 kernels.
+
+Problem: In 3.4.x kernels, the function d_alloc_root has been renamed to d_make_root. For the vmblock module to compile, a single line needs to be changed in linux/filesystem.c. See http://sgros.blogspot.com/2012/06/upgrade-to-fedora-17.html for additional information.
+
+Solution: I've added a diff section to modify filesystem.c so the vmblock module compiles properly.
+
+To run, download both the patch-modules bash script and the .patch file, place them together in the same directory (/tmp works) and run the following command.
+
+# ./patch-modules_3.4.0.sh
